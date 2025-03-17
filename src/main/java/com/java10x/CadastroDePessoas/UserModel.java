@@ -1,6 +1,7 @@
 package com.java10x.CadastroDePessoas;
 
 
+import com.java10x.CadastroDePessoas.tarefas.TarefaModel;
 import jakarta.persistence.*;
 
 //Entity ele transforma uma classe em uma entidade do DB
@@ -15,12 +16,23 @@ public class UserModel {
     private String nome;
     private String cpf;
     private String email;
-    private String Senha;
+
+
+    @ManyToOne// uma unica tarefa para usuario
+    @JoinColumn(name = "id_tarefa") // criar chave estrangeira
+    private TarefaModel tarefas;
+
     public  UserModel(String nome,String cpf,String email,String Senha) {
+
+
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
-        this.Senha = Senha;
+
+
+    }
+    UserModel(TarefaModel tarefas){
+        this.tarefas = tarefas;
     }
 
     public String getCpf() {
@@ -36,9 +48,6 @@ public class UserModel {
         return email;
     }
 
-    public String getSenha() {
-        return Senha;
-    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -53,7 +62,4 @@ public class UserModel {
         this.email = email;
     }
 
-    public void setSenha(String senha) {
-        Senha = senha;
-    }
 }
