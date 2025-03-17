@@ -3,11 +3,17 @@ package com.java10x.CadastroDePessoas;
 
 import com.java10x.CadastroDePessoas.tarefas.TarefaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 //Entity ele transforma uma classe em uma entidade do DB
 // JPA = Java Persistence API
 @Entity
 @Table(name = "tb_cadastro")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class UserModel {
 
     @Id
@@ -22,44 +28,5 @@ public class UserModel {
     @JoinColumn(name = "id_tarefa") // criar chave estrangeira
     private TarefaModel tarefas;
 
-    public  UserModel(String nome,String cpf,String email,String Senha) {
-
-
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-
-
-    }
-    UserModel(TarefaModel tarefas){
-        this.tarefas = tarefas;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 }

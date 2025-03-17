@@ -2,9 +2,15 @@ package com.java10x.CadastroDePessoas.tarefas;
 
 import com.java10x.CadastroDePessoas.UserModel;
 import jakarta.persistence.*;
-
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "tb_tarefas")
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class TarefaModel {
 
     @Id
@@ -17,9 +23,6 @@ public class TarefaModel {
     @OneToMany(mappedBy = "tarefa")
     private UserModel users;
 
-    public TarefaModel(String tarefa, int dificuldade){
-    this.tarefa = tarefa;
-    this.dificuldade = dificuldade;
-    }
+
 
 }
